@@ -19,7 +19,41 @@
   <script>
     const input = document.querySelector('.numberInput');
     const para = document.querySelector('p');
+    para.setAttribute('style', 'white-space: pre;');
+    /* functions */
+    function squared(num) {
+      return Math.pow(num,2);
+    }
+    function cubed(num) {
+      return Math.pow(num,3);
+    }
+    function factorial(num) {
+      if (num < 0) {
+        return undefined;
+      }
+      else if(num == 0){
+        return 1;
+      }
+      else{
+        for(let i = num - 1; i > 1; i--){
+          num *= i;
+        }
+        return num;
+      }
+    }
+    /**/
 
+    input.addEventListener('change', () => {
+      const num = parseFloat(input.value);
+      if (isNaN(num)) {
+        para.textContent = 'You need to enter a number!';
+      } 
+      else {
+        para.textContent = `${num} squared is ${squared(num)}.\n`;
+        para.textContent += `${num} cubed is ${cubed(num)}. `;
+        para.textContent += `\n${num} factorial is ${factorial(num)}. `;
+      }
+    }); 
   </script>
 </body>
 </html>
